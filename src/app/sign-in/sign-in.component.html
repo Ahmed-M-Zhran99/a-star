@@ -1,0 +1,19 @@
+<!-- Search -->
+<div class="search">
+  <form action="#" class="search_form" id="sidebar_search_form">
+    <input type="email" class="search_input" placeholder="UserName" #userName />
+    <input
+      type="password"
+      class="search_input mt-3"
+      placeholder="Password"
+      #password
+    />
+    <button
+      type="submit"
+      class="submit mt-4"
+      (click)="login(userName.value, password.value)"
+    >
+      Submit
+    </button>
+  </form>
+</div>

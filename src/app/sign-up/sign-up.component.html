@@ -1,0 +1,34 @@
+<!-- Search -->
+<div class="search">
+  <form action="#" class="search_form" id="sidebar_search_form">
+    <input class="search_input" type="text" placeholder="fullName" #name />
+    <input
+      type="password"
+      class="search_input mt-3"
+      placeholder="Password"
+      #password
+    />
+    <input
+      class="search_input mt-3"
+      type="text"
+      placeholder="address"
+      #address
+    />
+    <input
+      class="search_input mt-3"
+      type="text"
+      aria-label="Amount (to the nearest dollar)"
+      placeholder="userName"
+      #userName
+    />
+    <button
+      type="submit"
+      class="submit mt-4"
+      (click)="
+        createUser(userName.value, name.value, password.value, address.value)
+      "
+    >
+      Sign up
+    </button>
+  </form>
+</div>

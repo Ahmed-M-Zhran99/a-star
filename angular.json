@@ -1,0 +1,146 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "a-star-onlineShopping": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/a-star-online-shopping",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/.nojekyll",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "js",
+                "output": "js"
+              },
+              {
+                "glob": "**/*",
+                "input": "plugins",
+                "output": "plugins"
+              },
+              {
+                "glob": "**/*",
+                "input": "styles",
+                "output": "styles"
+              }
+            ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "plugins/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "scripts": true,
+                "styles": true,
+                "fonts": {
+                  "inline": false
+                }
+              },
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "45kb",
+                  "maximumError": "60kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "a-star-onlineShopping:build:production"
+            },
+            "development": {
+              "buildTarget": "a-star-onlineShopping:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "a-star-onlineShopping:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/.nojekyll",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "js",
+                "output": "js"
+              },
+              {
+                "glob": "**/*",
+                "input": "plugins",
+                "output": "plugins"
+              },
+              {
+                "glob": "**/*",
+                "input": "styles",
+                "output": "styles"
+              }
+            ],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}

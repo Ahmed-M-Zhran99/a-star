@@ -1,0 +1,30 @@
+@media only screen and (max-width: 1199px)
+{
+	.super_container
+	{
+		padding-left: 0;
+	}
+	.sidebar
+	{
+		display: none;
+	}
+	.section_container
+	{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.section_container .container
+	{
+		max-width: 960px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.header
+	{
+		display: block;
+	}
+	.home_content_container
+	{
+		top: 160px;
+	}
+}
